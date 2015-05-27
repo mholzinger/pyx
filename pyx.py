@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import subprocess
 import sys
@@ -40,13 +40,16 @@ def decodeRSAkey(cert):
     # return output value
     return rsa_array
 
+def main():
+    # Map input argument to variable 'cert'
+    cert_file=str(sys.argv[1])
 
-# Map input argument to variable 'cert'
-cert_file=str(sys.argv[1])
+    # Call our command!
+    #out = decodeCert(cert_file)
+    out = decodeCSR(cert_file)
+    #out = decodeRSAkey(cert_file)
 
-# Call our command!
-#out = decodeCert(cert_file)
-out = decodeCSR(cert_file)
-#out = decodeRSAkey(cert_file)
+    print out
 
-print out
+if __name__ == '__main__':
+    main()
